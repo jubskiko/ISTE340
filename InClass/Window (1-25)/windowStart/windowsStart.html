@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>window play</title>
+	<script>
+
+		// Browser detection
+		// Has to be first thing on first project
+		if(!document.getElementById) {
+			// old ass browser
+			window.location='legacy.html'
+		}
+
+		// hold the newWin ref
+		let newWin; 
+
+		// will create a new window object, and store it in newWin
+		const makeNew = () => {
+			newWin = window.open('', '', 'height=300, width=250, top=250, left=300')
+			// write to new window
+			newWin.document.write('Hello')
+
+			// if i were to try to get anything or write anything to this I would get a cors issue since they are different domains
+			// newWin = window.open('https://www.rit.edu', '', 'height=300, width=250, top=250, left=300')
+
+		}
+
+		// closes the window that was stored in newWin in the make new method
+		const closeNew = () => {
+			newWin.close();
+		}
+
+	</script>
+</head>
+<body style="background-color:#999966;">
+<form>
+  <input type="button" value="Create New Window!" onclick="makeNew()"><br/>
+  <input type="button" value="Close the New Window!" onclick="closeNew()"><br/>
+</form>
+</body>
+</html>
+
+
+
