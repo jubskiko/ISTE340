@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <title>Form Play</title>
+	<script type="text/javascript">
+  		const go = (dom) => {
+            console.log(dom.value)
+            if (dom.value != 'none') window.location = dom.value;
+        }
+
+        const choose = () => {
+            // go through the radios
+            let radio = document.getElementsByName('color')
+            for (let i = 0, len = radio.length; i < len; i++) {
+                if(radio[i].checked) {
+                    document.getElementById('target').value = radio[i].value
+                    return;
+                }
+            }
+
+        }
+	</script>
+</head>
+<body>
+    <form id="myForm">
+        <!-- Sends over the select object so we can get the value -->
+        <select onchange="go(this)"> 
+            <option value="none">
+                --Select page--
+            </option>
+            <option value="http://www.microsoft.com">
+                Microsoft
+            </option>
+            <option value="http://search.yahoo.com">
+                Yahoo
+            </option>
+            <option value="http://www.w3schools.com">
+                W3Schools
+            </option>
+        </select>
+        <hr />
+        <p>Which did you choose?<br />
+        <label for="r"><input type="radio" value="red" id="r" name="color"/> Red</label><br/>
+        <label for="g"><input type="radio" value="green" id="g" name="color"/> Green</label><br/>
+        <label for="b"><input type="radio" value="blue" id="b" name="color"/> Blue</label><br/>
+        <input type="button" value="Color choice" onclick="choose()"/></p>
+        <p>Your favorite color is: <input type="text" name="favorite" id="target" value="" /></p>
+    </form>
+</body>
+</html>

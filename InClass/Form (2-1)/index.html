@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script>
+
+        const val = () => {
+
+            // Allows us to do all checks the return overall status
+            let ret = true
+
+            // Check to make sure fields have values
+            if(document.forms[0].elements[0].value == '') {
+                document.forms[0].elements[0].style.backgroundColor = "pink"
+                ret = false
+            }
+            if(document.forms[0].elements[1].value == '') {
+                document.forms[0].elements[1].style.backgroundColor = "pink"
+                ret = false
+            }
+
+            return ret
+        }
+
+    </script>
+    
+</head>
+<body>
+    <form action="page.php" method="get" onsubmit="return val()">
+        First: <input type="text" name="fname" placeholder="name goes here"/><br>
+        Last: <input type="text" name="lname"/><br>
+        <input type="submit" value="go">
+    </form>
+</body>
+</html>

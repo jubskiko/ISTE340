@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-23</title>
+    <script>
+        'use strict';
+        // Stops stupid things, such as delete Object;
+
+        // scope tests
+        console.log("test with let")
+        let x = 0
+        const test = () => {
+            let x = 12;
+            console.log("in the funct: ", x)
+        }
+
+        console.log("before the funct", x);
+        test();
+        console.log("after the funct: ", x);
+        // var allows for something the window.x because of absolute address
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
