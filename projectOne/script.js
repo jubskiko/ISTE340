@@ -1,5 +1,5 @@
 let data = {
-    init: ["Let's make a sandwich", "Hot", "Cold"],
+    init: ["Do you want a hot or cold sandwich?", "Hot", "Cold"],
     hot: ["Dietary Restrictions", "None", "Vegan", "Gluten-Free"],
     vegan: ["Choose your base", "Veggie Burger", "Grilled Vegetables"],
     'veggie-burger': ["Vegan cheese?", "Yes", "No"],
@@ -22,29 +22,37 @@ let data = {
     'no-salad': ["Thank you for visiting!"]
 };
 
-//This will be the runner method where we loop through and will run until completion of the program
-const generate = () => {
-    build(data.init)
-    
-}
-
-// Here we take the question and two options and build the selector
-const build = (data) => {
+const build = (key) => {
+    let currentData = data[key]
     let div = document.createElement('div')
-    div.classList += "selection"
     let head = document.createElement('h2')
-    head.innerHTML = data[0]
+    head.innerHTML = currentData[0]
     div.appendChild(head)
     let sel = document.createElement('select')
+    let def = document.createElement('option')
+    def.textContent = "Please choose..."
+    def.disabled = true
+    def.selected = true
+    sel.appendChild(def)
+
     for(let i = 1; i<3; i++) {
         let opt = document.createElement('option')
-        opt.value = data[i];
-        opt.innerHTML = data[i];
+        opt.value = currentData[i];
+        opt.innerHTML = currentData[i];
         sel.appendChild(opt)
     }
+
+    sel.addEventListener('change', (e) => {
+        while(div.nextSibling) {
+            div.parentNode.removeChild(div.nextSibling)
+        }
+        let next = e.target.value.toLowerCase().replace(/\s+/g, '-')
+        build(next)
+    });
+
     div.appendChild(sel)
     document.body.appendChild(div)
 }
 
-generate()
+build('init')
 
