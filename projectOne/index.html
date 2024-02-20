@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lets make a sandwich!</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <script>
+        if(!document.getElementById) {
+			window.location='./assets/pages/legacy.html'
+		}
+    </script>
+    <script src="./assets/js/cookies.js" defer></script>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
     <h1>Lets make a sandwich!</h1>
