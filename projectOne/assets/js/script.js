@@ -1,5 +1,5 @@
 let data = ""
-let orderStr = ""
+let selectionHistory = []
 
 window.addEventListener("load", () => {
     const xhr = new XMLHttpRequest()
@@ -25,7 +25,7 @@ const build = (key) => {
     }
     let currentData = data[key]
     let div = document.createElement('div')
-    let head = document.createElement('h2')
+    let head = document.createElement('h3')
     head.textContent = currentData[0]
     div.appendChild(head)
     let sel = document.createElement('select')
@@ -44,14 +44,8 @@ const build = (key) => {
     sel.addEventListener('change', (e) => {
         while(div.nextSibling) {
             div.parentNode.removeChild(div.nextSibling)
-            if (orderStr.charAt(orderStr.length) - 1 == " ") {
-                orderStr = orderStr.substring(0, orderStr.lastIndexOf(" "))
-            }
-            console.log(orderStr)
-            orderStr = orderStr.substring(0, orderStr.lastIndexOf(" "))
         }
         let next = e.target.value.toLowerCase().replace(/\s+/g, '-')
-        orderStr += next + " "
         build(next)
     })
     div.appendChild(sel)
@@ -67,9 +61,23 @@ const updateOrders = () => {
     }
     const orderDivs = document.createElement('div')
     orders.forEach(e => {
-        let orderDiv = document.createElement('div')
-        orderDiv.textContent = `Name: ${e.name}, Email: ${e.email}, Note: ${e.note || ''}, Order: ${e.order}`
-        orderDivs.appendChild(orderDiv)
+        let card = document.createElement('div')
+        card.classList += 'card'
+        let nameTag = document.createElement('h4')
+        nameTag.textContent = e.name
+        card.appendChild(nameTag)
+        let emailTag = document.createElement('p')
+        emailTag.textContent = e.email
+        card.appendChild(emailTag)
+        if (e.note != '') {
+            let noteTag = document.createElement('p')
+            noteTag.textContent = e.note
+            card.appendChild(noteTag)
+        }
+        let orderTag = document.createElement('p')
+        orderTag.textContent = e.order
+        card.appendChild(orderTag)
+        orderDivs.appendChild(card)
     })
     document.getElementById('savedOrders').appendChild(orderDivs)
 }
@@ -104,11 +112,16 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
         console.log("In email not right")
         return
     }
+    let sels = document.getElementsByTagName('select')
+    for(let i = 0; i < sels.length; i++) {
+        let val = sels[i].value
+        selectionHistory.push(val)
+    }
     const order = {
         name: name,
         email: email,
         note: note,
-        order: orderStr
+        order: selectionHistory
     }
     if (window.localStorage) {
         let orders = JSON.parse(localStorage.getItem('orders') || '[]')
@@ -120,7 +133,7 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
         SetCookie("orders", orders)
     }
     document.getElementById('formContainer').style.display = "none"
-    orderStr = ""
+    selectionHistory = ""
     updateOrders()
 })
 
