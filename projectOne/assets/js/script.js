@@ -24,6 +24,8 @@ const build = (key) => {
     }
     let currentData = data[key]
     let div = document.createElement('div')
+    div.style.opacity = 0 
+    div.style.transform = 'translateX(-100%)' 
     let head = document.createElement('h3')
     head.textContent = currentData[0]
     div.appendChild(head)
@@ -33,15 +35,14 @@ const build = (key) => {
     def.disabled = true
     def.selected = true
     sel.appendChild(def)
-    for(let i = 1; i < currentData.length; i++) {
+    for (let i = 1; i < currentData.length; i++) {
         let opt = document.createElement('option')
         opt.value = currentData[i]
         opt.innerText = currentData[i]
         sel.appendChild(opt)
     }
-    // implementation to remove the options later if an earlier is chosen
     sel.addEventListener('change', (e) => {
-        while(div.nextSibling) {
+        while (div.nextSibling) {
             div.parentNode.removeChild(div.nextSibling)
         }
         let next = e.target.value.toLowerCase().replace(/\s+/g, '-')
@@ -49,6 +50,30 @@ const build = (key) => {
     })
     div.appendChild(sel)
     document.getElementById('order').appendChild(div)
+    slideElementIn(div)
+}
+
+// Animation to move over our selection elements
+function slideElementIn(element) {
+    let start = null
+    const duration = 500 
+
+    function animate(time) {
+        if (!start) start = time
+        let progress = (time - start) / duration
+
+        if (progress < 1) {
+            let translateValue = -100 + progress * 100 
+            element.style.transform = `translateX(${translateValue}%)`
+            element.style.opacity = progress
+            requestAnimationFrame(animate)
+        } else {
+            element.style.transform = 'translateX(0%)' 
+            element.style.opacity = 1
+        }
+    }
+
+    requestAnimationFrame(animate)
 }
 
 const updateOrders = () => {
@@ -57,6 +82,10 @@ const updateOrders = () => {
         orders = JSON.parse(localStorage.getItem('orders') || '[]')
     } else {
         orders = JSON.parse(GetCookie('orders') || '[]')
+    }
+    let savedOrders = document.getElementById('savedOrders')
+    while(savedOrders.firstChild) {
+        savedOrders.removeChild(savedOrders.firstChild)
     }
     const orderDivs = document.createElement('div')
     orders.forEach(e => {
@@ -78,7 +107,7 @@ const updateOrders = () => {
         card.appendChild(orderTag)
         orderDivs.appendChild(card)
     })
-    document.getElementById('savedOrders').appendChild(orderDivs)
+    savedOrders.appendChild(orderDivs)
 }
 
 // Closes the form when somewhere else on the screen is clicked
@@ -132,7 +161,7 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
         SetCookie("orders", orders)
     }
     document.getElementById('formContainer').style.display = "none"
-    selectionHistory = ""
+    selectionHistory = []
     updateOrders()
 })
 
