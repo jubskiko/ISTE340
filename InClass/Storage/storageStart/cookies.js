@@ -47,25 +47,3 @@ function SetCookie (name,value,maxAge,path,domain,sameSite,secure) {
     ((sameSite) ? ";samesite=" + sameSite : ";samesite=strict") +
     ((secure) ? ";secure;" : ";");
 }
-
-const changebg = (color) => {
-	if(window.localStorage) {
-		// do local
-		console.log('localStrorage')
-		if (color) {
-			localStorage.setItem("color", color)
-		}
-		if (localStorage.getItem('color')) {
-			document.getElementsByTagName('body')[0].style.background = 
-				localStorage.getItem('color')
-
-		}
-	} else {
-		// do cookie
-		console.log('cookie')
-	}
-}
-
-const clearBg = () => {
-
-}

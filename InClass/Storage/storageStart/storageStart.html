@@ -8,7 +8,42 @@
 		////////////////////////////Careful - does not work on file:// (MUST upload to gibson)
 		//////For the project, do something that fits into what you are building - if you do this, you will get a "0" for storage
 		//localStorage & cookies
+		
+		const changebg = (color) => {
+			if(window.localStorage) {
+				// do local
+				console.log('localStrorage')
+				if (color) {
+					localStorage.setItem("color", color)
+				}
+				if (localStorage.getItem('color')) {
+					document.getElementsByTagName('body')[0].style.background = 
+						localStorage.getItem('color')
+				}
+			} else {
+				// do cookie
+				console.log('cookie')
+			}
+		}
 
+		const clearbg = () => {
+			// remove ls
+			localStorage.removeItem("color")
+			document.getElementsByTagName('body')[0].style.background = ''	
+		}
+
+		// cookies
+		// have they been here before
+		if(GetCookie("user_id") == null) {
+			// first time
+			let name = prompt('Welcome, first time...?')
+			document.write("<h2>Welcome, " + name + "</h2>")
+			SetCookie("user_id", name)
+			SetCookie("hit_count", 1)
+		} else {
+			document.write("<h2>Welcome back, " + GetCookie('user_id') + ". You have been here " + GetCookie('hit_count') + " times.</h2>")
+			SetCookie("hit_count", parseInt(GetCookie('hit_count'))+1)
+		}
 
 	</script>
 </head>
