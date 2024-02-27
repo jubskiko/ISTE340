@@ -35,8 +35,8 @@ const build = (key) => {
 
     for(let i = 1; i < currentData.length; i++) {
         let opt = document.createElement('option')
-        opt.value = currentData[i];
-        opt.innerText = currentData[i];
+        opt.value = currentData[i]
+        opt.innerText = currentData[i]
         sel.appendChild(opt)
     }
 
@@ -51,8 +51,25 @@ const build = (key) => {
     });
 
     div.appendChild(sel)
-    document.body.appendChild(div)
+    document.getElementById('order').appendChild(div)
 }
+
+const updateOrders = () => {
+    let orders;
+    if (window.localStorage) {
+        orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    } else {
+        orders = JSON.parse(GetCookie('orders') || '[]');
+    }
+    const orderDivs = document.createElement('div');
+    orders.forEach(e => {
+        let orderDiv = document.createElement('div');
+        orderDiv.textContent = `Name: ${e.name}, Email: ${e.email}, Note: ${e.note || ''}`; // Added fallback for note
+        orderDivs.appendChild(orderDiv);
+    });
+    document.getElementById('savedOrders').appendChild(orderDivs)
+};
+
 
 // Closes the form when somewhere else on the screen is clicked
 window.onclick = (e) => {
@@ -84,20 +101,21 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
         console.log("In email not right")
         return
     }
-    document.getElementById('formContainer').style.display = "none";
-    if (window.localStorage) {
-        localStorage.setItem("name", name)
-        localStorage.setItem("email", email)
-        console.log("In local storage")
-        if (note !== "") {
-            localStorage.setItem("note", note)
-        }
-    } else {
-        SetCookie("name", name)
-        SetCookie("email", email)
-        console.log("In cookies")
-        if (note !== "") {
-            SetCookie("note", note)
-        }
+    const order = {
+        name: name,
+        email: email,
+        note: note
     }
+    if (window.localStorage) {
+        let orders = JSON.parse(localStorage.getItem('orders') || '[]')
+        orders.push(order)
+        localStorage.setItem("orders", JSON.stringify(orders))
+    } else {
+        let orders = JSON.parse(GetCookie('orders') || '[]')
+        orders.push(order)
+        SetCookie("orders", orders)
+    }
+    document.getElementById('formContainer').style.display = "none"
+    updateOrders()
 });
+
