@@ -6,8 +6,8 @@
     <title>Lets make a sandwich!</title>
     <script>
         if(!document.getElementById) {
-			window.location='./assets/pages/legacy.html'
-		}
+			    window.location='./assets/pages/legacy.html'
+		    }
     </script>
     <script src="./assets/js/cookies.js" defer></script>
     <script src="./assets/js/script.js" defer></script>
@@ -15,6 +15,11 @@
 </head>
 <body>
     <h1>Lets make a sandwich!</h1>
+    <div class="container">
+      <div id="column1" class="column">Current Part</div>
+      <div id="saved" class="column">Saved Orders</div>
+      <div id="column3" class="column">Next Implementation</div>
+    </div>    
     <div id="formContainer" class="modal">
         <form id="orderForm">
           <label for="name">Name:</label>
