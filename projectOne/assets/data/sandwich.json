@@ -12,12 +12,11 @@
     "burger": ["What kind of cheese would you like?", "American", "Cheddar", "None"],
     "american": ["Add onions?", "Yes", "No"],
     "cheddar": ["Add pickles?", "Yes", "No"],
-    "cold": ["Do you want a sub?", "Yes", "No"],
-    "yes-sub": ["Choose your main ingredient", "Turkey", "Ham", "Veggie"],
+    "cold": ["Choose your cold option", "Sub", "Salad"],
+    "sub": ["Choose your main ingredient", "Turkey", "Ham", "Veggie"],
     "turkey": ["Add cheese?", "Swiss", "Provolone", "No Cheese"],
     "ham": ["Condiments?", "Mayo", "Mustard", "Both", "None"],
     "veggie": ["Include avocado?", "Yes", "No"],
-    "no-sub": ["Would you like a salad instead?", "Yes", "No"],
-    "yes-salad": ["Choose your salad base", "Caesar", "Garden", "Greek"],
-    "no-salad": ["Thank you for visiting!"]
-}
+    "salad": ["Choose your salad base", "Caesar", "Garden", "Greek"]
+  }
+  
