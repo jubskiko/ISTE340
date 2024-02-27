@@ -7,7 +7,6 @@ window.addEventListener("load", () => {
     // Takes the data from the json file provided
     xhr.addEventListener("load", ()  => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            // console.log(this.Response)
             data = JSON.parse(xhr.response)
             build('init')
         }
