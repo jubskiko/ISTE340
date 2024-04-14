@@ -1,30 +1,33 @@
-import React from 'react';
-import { Card, Header, Tab } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import getData from '../utils/getData';
 
-const Minor = ({ data }) => {
+const Minor = () => {
+  const [minorsData, setMinorsData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    getData('minors/')
+      .then((json) => {
+        console.log(json);
+        const minorsArray = json.UgMinors;
+        setMinorsData(minorsArray);
+        setLoaded(true);
+      });
+  }, []);
+
+  if (!loaded) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <Tab.Pane>
-      <Header as="h2" textAlign="center">Minors</Header>
-      <Card.Group>
-        {data.map((minor) => (
-          <Card key={minor.name}>
-            <Card.Content>
-              <Card.Header>{minor.title}</Card.Header>
-              <Card.Description>{minor.description}</Card.Description>
-              <Card.Meta>{minor.note}</Card.Meta>
-            </Card.Content>
-            <Card.Content extra>
-              <Header as="h4">Courses</Header>
-              <ul>
-                {minor.courses.map((course, index) => (
-                  <li key={index}>{course}</li>
-                ))}
-              </ul>
-            </Card.Content>
-          </Card>
-        ))}
-      </Card.Group>
-    </Tab.Pane>
+    <div>
+      {minorsData.map((minor, index) => (
+        <div key={index}>
+          <h2>{minor.name}</h2>
+          <p>{minor.description}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 

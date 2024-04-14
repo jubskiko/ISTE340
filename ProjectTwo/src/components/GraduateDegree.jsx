@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import getData from '../utils/getData';
 
-const UndergradDegree = () => {
+const GraduateDegree = () => {
   const [degreesData, setDegreesData] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     getData('degrees/')
       .then((json) => {
-        console.log(json.undergraduate);
-        setDegreesData(json.undergraduate);
+        console.log(json.graduate);
+        let data = json.graduate;
+        setDegreesData(data);
         setLoaded(true);
       });
   }, []);
@@ -26,7 +27,7 @@ const UndergradDegree = () => {
           <p>{degree.description}</p>
           <h3>Concentrations:</h3>
           <ul>
-            {degree.concentrations.map((concentration, index) => (
+            {degree.concentrations && degree.concentrations.map((concentration, index) => (
               <li key={index}>{concentration}</li>
             ))}
           </ul>
@@ -36,4 +37,4 @@ const UndergradDegree = () => {
   );
 };
 
-export default UndergradDegree;
+export default GraduateDegree;
