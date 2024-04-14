@@ -3,6 +3,9 @@ import React, {useState} from 'react'
 import getData from './utils/getData'
                                                                           
 // import the components
+import PeopleTabs from './components/PeopleTabs'
+import People from './components/People'
+
 
 // import the css
 import './App.css'
@@ -17,9 +20,10 @@ const App = () => {
     // page was just rendered
     getData('about/')
       .then((json) => {
+        console.log(json)
+        setLoaded(true)
         setAboutObj(json)
       })
-    setLoaded(true)
   }, [])
 
   // this return is for the page before we load the data
@@ -47,6 +51,10 @@ const App = () => {
           </div>
         </div>
         <hr />
+        {/* {put my components here} */}
+        <PeopleTabs />
+        <hr />
+        <People />
       </div>
     </>
   )
