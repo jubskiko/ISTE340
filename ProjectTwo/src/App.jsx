@@ -3,9 +3,8 @@ import React, {useState} from 'react'
 import getData from './utils/getData'
                                                                           
 // import the components
-import PeopleTabs from './components/PeopleTabs'
 import People from './components/People'
-
+import EducationTab from './components/EducationTab'
 
 // import the css
 import './App.css'
@@ -51,8 +50,7 @@ const App = () => {
           </div>
         </div>
         <hr />
-        {/* {put my components here} */}
-        <PeopleTabs />
+        <EducationTab />
         <hr />
         <People />
       </div>
