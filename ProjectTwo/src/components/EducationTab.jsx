@@ -6,6 +6,7 @@ import Minor from './Minor';
 import Certificate from './Certificate';
 import "./EducationTab.css"
 
+// This component is a tab that contains the UndergradDegree, GraduateDegree, Minor, and Certificate components
 const EducationTab = () => {
   const panes = [
     { menuItem: 'Undergraduate Degrees', render: () => <UndergradDegree /> },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getData from '../utils/getData';
 
+// This component displays the undergraduate degree information
 const UndergradDegree = () => {
   const [degreesData, setDegreesData] = useState([]);
   const [loaded, setLoaded] = useState(false);

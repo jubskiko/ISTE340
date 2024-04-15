@@ -5,6 +5,7 @@ import getData from './utils/getData'
 // import the components
 import People from './components/People'
 import EducationTab from './components/EducationTab'
+import Info from './components/Info'
 
 // import the css
 import './App.css'
@@ -39,7 +40,6 @@ const App = () => {
     <>
       <div className='sticky'>
         <h1>Welcome to the iSchool</h1>
-        <div>...Menu of some kind...</div>
       </div>
       <div className="App">
         <div className='About'>
@@ -52,6 +52,8 @@ const App = () => {
         </div>
         <hr />
         <EducationTab />
+        <hr />
+        <Info />
         <hr />
         <People />
         <hr />

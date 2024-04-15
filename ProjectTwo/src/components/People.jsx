@@ -4,6 +4,7 @@ import getData from '../utils/getData';
 
 import './People.css';
 
+// This component displays the people information
 const People = () => {
     const [loaded, setLoaded] = useState(false);
     const [peoObj, setPeoObj] = useState({ faculty: [], staff: [] });
@@ -16,12 +17,9 @@ const People = () => {
                 setPeoObj(json);
                 setLoaded(true);
             })
-            .catch((error) => {
-                // handle error
-                console.error('An error occurred while fetching people:', error);
-            });
     }, []);
 
+    //  Function to open the modal with the selected person
     const openModalWithPerson = (person) => {
         setSelectedPerson(person);
         setModalOpen(true);

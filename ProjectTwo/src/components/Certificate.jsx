@@ -8,14 +8,12 @@ const Certificate = () => {
   useEffect(() => {
     getData('degrees/')
       .then((json) => {
+        //Gets only the certificate data from the JSON object
         const certificate = json.graduate.find(degree => degree.degreeName === 'graduate advanced certificates');
         console.log(certificate);
         setCertificateData(certificate);
         setLoaded(true);
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
   }, []);
 
   if (!loaded) {

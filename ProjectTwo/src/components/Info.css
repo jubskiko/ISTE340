@@ -1,0 +1,26 @@
+.infoSegment {
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.infoHeader {
+    color: #2c3e50;
+    margin-bottom: 16px; 
+}
+
+.infoContent {
+    margin-bottom: 20px; 
+}
+
+.infoList {
+    margin-top: 10px;
+}
+
+.infoStatistic {
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 5px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+}

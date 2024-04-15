@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getData from '../utils/getData';
 
+// This component displays the graduate degree information
 const GraduateDegree = () => {
   const [degreesData, setDegreesData] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +20,7 @@ const GraduateDegree = () => {
     return <h1>Loading...</h1>;
   }
 
+  // Display the graduate degree information
   return (
     <div className='graduate-degree'>
       {degreesData.map((degree, index) => (
