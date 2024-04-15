@@ -4,8 +4,9 @@ import UndergradDegree from './UndergradDegree';
 import GraduateDegree from './GraduateDegree';
 import Minor from './Minor';
 import Certificate from './Certificate';
+import "./EducationTab.css"
 
-const EducationTabs = () => {
+const EducationTab = () => {
   const panes = [
     { menuItem: 'Undergraduate Degrees', render: () => <UndergradDegree /> },
     { menuItem: 'Graduate Degrees', render: () => <GraduateDegree /> },
@@ -18,4 +19,4 @@ const EducationTabs = () => {
   );
 };
 
-export default EducationTabs;
+export default EducationTab;

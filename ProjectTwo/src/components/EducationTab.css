@@ -1,0 +1,108 @@
+/* Styles for the tab container */
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style for UndergradDegree component */
+.undergrad-degree {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.undergrad-degree h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.undergrad-degree p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.undergrad-degree h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.undergrad-degree ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.undergrad-degree li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Style for GraduateDegree component */
+.graduate-degree {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.graduate-degree h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.graduate-degree p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.graduate-degree h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.graduate-degree ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.graduate-degree li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Style for Minor component */
+.minor {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.minor h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.minor p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Style for Certificate component */
+.certificate {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.certificate h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}

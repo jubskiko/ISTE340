@@ -1,13 +1,14 @@
 // import the important stuff
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import getData from './utils/getData'
-                                                                          
+
 // import the components
 import People from './components/People'
 import EducationTab from './components/EducationTab'
 
 // import the css
 import './App.css'
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => {
   // state
@@ -26,7 +27,7 @@ const App = () => {
   }, [])
 
   // this return is for the page before we load the data
-  if(!loaded) return (
+  if (!loaded) return (
     <>
       <h1>Welcome to the iSchool</h1>
       <div>loading...</div>
@@ -53,6 +54,7 @@ const App = () => {
         <EducationTab />
         <hr />
         <People />
+        <hr />
       </div>
     </>
   )

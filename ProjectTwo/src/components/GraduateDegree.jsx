@@ -20,7 +20,7 @@ const GraduateDegree = () => {
   }
 
   return (
-    <div>
+    <div className='graduate-degree'>
       {degreesData.map((degree, index) => (
         <div key={index}>
           <h2>{degree.title}</h2>

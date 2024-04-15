@@ -20,7 +20,7 @@ const Minor = () => {
   }
 
   return (
-    <div>
+    <div className='minor'>
       {minorsData.map((minor, index) => (
         <div key={index}>
           <h2>{minor.name}</h2>
